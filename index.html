@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Three NG</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+
+		<main>
+			<div id="overlay">
+				<div>
+					<h1>Three NG</h1>
+				</div>
+
+				<div>
+					<h4>Mesh type</h4>
+					<ul>
+						<li>
+							<label>
+								Legacy Precomputed
+								<input type="radio" name="mesh-type" id="mesh-legacy" checked>
+							</label>
+						</li><li>
+							<label>
+								Multi-resolution precomputed
+								<input type="radio" name="mesh-type" id="mesh-multires">
+							</label>
+						</li>
+					</ul>
+				</div>
+
+				<div class="legacy">
+					<h4>Drag and drop local mesh here</h4>
+					<div class="drop-overlay" id="legacy-dropzone">
+						Drop file here
+					</div>
+				</div>
+
+				<div class="multires">
+					<h4>Drag and drop <code>info.json</code> here</h4>
+					<div class="drop-overlay" id="info-json-dropzone">
+						Drop file here
+					</div>
+				</div>
+
+				<div class="multires">
+					<h4>Drag and drop <code>&lt;segment&gt;.index</code> here</h4>
+					<div class="drop-overlay" id="segment-index-dropzone">
+						Drop file here
+					</div>
+				</div>
+
+				<div class="multires">
+					<h4>Drag and drop <code>&lt;segment&gt;</code> here</h4>
+					<div class="drop-overlay" id="segment-dropzone">
+						Drop file here
+					</div>
+				</div>
+
+				<div>
+					<h4>From URL</h4>
+					<form id="url-input">
+						<label>URL</label>
+						<input type="text" id="url" placeholder="https://...">
+						<input type="submit" id="load-url" value="Load">
+					</form>
+				</div>
+			</div>
+		</main>
+		
+		<script src="script.ts" type="module"></script>
+	</body>
+</html>

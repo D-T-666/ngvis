@@ -1,0 +1,154 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+
+	&:not(:has(#mesh-legacy:checked)) {
+		.legacy {
+			display: none;
+		}
+	}
+	&:not(:has(#mesh-multires:checked)) {
+		.multires {
+			display: none;
+		}
+	}
+}
+
+canvas {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.drop-overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.6);
+	z-index: 5;
+	opacity: 0;
+	box-sizing: border-box;
+	text-align: center;
+
+	transition: opacity 200ms ease-in-out;
+
+	.drop-active & {
+		opacity: 1;
+		pointer-events: all;
+	}
+}
+
+input[name="mesh-type-selector"] {
+	display: none;
+
+	label:has(&:checked) {
+		background-color: #0062cc;
+	}
+}
+
+main {
+	position: absolute;
+	z-index: 1;
+	background-color: rgba(128, 128, 128, 0.4);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+#overlay {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	justify-content: center;
+	max-width: 30rem;
+	margin: auto;
+	height: 100%;
+
+	
+	& div {
+		position: relative;
+		background-color: #fff;
+		border-radius: 0.25rem;
+		padding: 1rem;
+
+		& h4 {
+			margin-top: 0;
+		}
+
+		& ul {
+			margin: 0;
+			list-style: none;
+			padding: 0;
+			display: block;
+			border-radius: 0.25rem;
+			overflow: hidden;
+			width: fit-content;
+
+			& > li {
+				display: inline-block;
+
+				& > label {
+					padding: 0.5rem;
+					user-select: none;
+					display: inline-block;
+
+					&:hover {
+						background-color: lightblue;
+					}
+					&:has(:checked) {
+						background-color: dodgerblue;
+						color: white;
+					}
+
+					& input {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+#url-input {
+	border: 1px solid lightgray;
+
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	border-radius: 0.25rem;
+	overflow: hidden;
+
+	#load-url {
+		border: none;
+		background-color: yellowgreen;
+		color: white;
+		&:hover {
+			background-color: greenyellow;
+		}
+	}
+
+	#url {
+		border: none;
+	}
+
+	& > * {
+		padding: 0.25rem 0.5rem;
+		font-size: 1rem;
+
+		& + & {
+			border-left: 1px solid lightgray;
+		}
+	}
+}
