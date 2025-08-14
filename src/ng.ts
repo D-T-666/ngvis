@@ -87,14 +87,13 @@ export function loadMultiresMeshFromBytes(indexBuffer: ArrayBuffer, meshBuffer: 
 	let _offset = 0;
 	for (let i = 0; i < index.num_lods; i++) {
 		chunks.push([]);
-		for (let j = 0; j < index.num_fragments_per_lod[i]; i++) {
+		for (let j = 0; j < index.num_fragments_per_lod[i]; j++) {
 			const buffer = meshBuffer.slice(
 				_offset,
 				_offset + index.fragment_offsets[i][j],
 			);
 			console.log(new Uint8Array(buffer), _offset, index.fragment_offsets[i][j]);
 			loader.decodeDracoFile(buffer, (geom: THREE.Geometry) => {
-				console.log(i, chunks);
 				chunks[i].push(new Mesh(
 					geom,
 					new MeshStandardMaterial({ color: 0x20e0b7, flatShading: true, side: DoubleSide })

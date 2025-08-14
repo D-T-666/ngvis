@@ -60,6 +60,7 @@ function tryMultiresLoad() {
 			scene.add(chunk);
 		}
 	}
+	console.log("added all chunks");
 	overlay.parentElement!.remove();
 	removeTestBox();
 	startControls();
